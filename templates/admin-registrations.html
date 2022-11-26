@@ -1,0 +1,106 @@
+{% extends 'admin-layout.html' %}
+{% block title %}Admin Dashboard | Registrations{% endblock %}
+{% block heading1 %} Registrations {% endblock %}
+{% block heading2 %} Registrations {% endblock %}
+{% block head %} 
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/static/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/static/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="/static/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+ {% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">List of all registrations</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>Sno</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Zip</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>City</th>
+              <th>Event Name</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+              {% for i in registrations %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>{{i.fname}} {{i.lname}}
+              </td>
+              <td>{{i.email}}</td>
+              <td>{{i.phone}}</td>
+              <td>{{i.address}}</td>
+              <td>{{i.zip}}</td>
+              <td>{{i.date}}</td>
+              <td>{{i.time}}</td>
+              <td>{{i.city}}</td>
+              <td>{{i.event_name}}</td>
+              <td><a href="/delete/registrations/{{i.id}}" target="blank"><button class="btn btn-sm btn-danger">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+            </tfoot>
+          </table>
+        </div>
+        <!-- /.card-body -->
+        
+        <div class="card-footer">
+          <!-- <h3 class="card-title">List of all events</h3> -->
+        </div>
+      </div>
+      <!-- /.card -->
+
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</div>
+{% endblock %}
+{% block scripts %}
+<!-- DataTables  & Plugins -->
+<script src="/static/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/static/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/static/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/static/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/static/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/static/admin/plugins/jszip/jszip.min.js"></script>
+<script src="/static/admin/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/static/admin/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/static/admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/static/admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/static/admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+{% endblock %}

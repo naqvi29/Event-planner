@@ -1,0 +1,70 @@
+{% extends 'admin-layout.html' %}
+{% block title %}Admin Dashboard | Events{% endblock %}
+{% block heading1 %} Add Event {% endblock %}
+{% block heading2 %} Add Event {% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Add a new Event</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/admin-add-events" method="post" enctype="multipart/form-data">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Event Name</label>
+              <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter event name" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Event Description</label>
+              <input type="text" class="form-control" name="desc" id="exampleInputEmail1" placeholder="Enter event desc" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Price</label>
+              <input type="number" step="any" class="form-control" name="price" id="exampleInputPassword1" placeholder="Enter Price" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">Display Picture</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" name="picture" class="custom-file-input" id="exampleInputFile" required>
+                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                  <span class="input-group-text">Upload</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <!--/.col (left) -->
+  </div>
+  <!-- /.row -->
+</div><!-- /.container-fluid -->
+{% endblock %}
+{% block scripts %} 
+
+{% if error %}
+    <script>
+        Swal.fire(
+        'Oops!',
+        '{{error}}',
+        'error'
+        )
+    </script>
+{% endif %}
+{% endblock %}

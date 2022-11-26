@@ -1,0 +1,235 @@
+{% extends 'layout.html' %}
+{% block title %}Events{% endblock %}
+{% block content %}
+
+<header id="site-header" class="site-header-ab valign-center">
+    <div class="intro">
+
+
+
+        <h1>Events</h1>
+
+
+
+    </div>
+</header>
+
+
+
+<section id="Events" class="section Events">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3 class="section-title">Events</h3>
+
+            </div>
+        </div>
+
+        {% for i in events %}
+        {% if loop.index % 3 == 0  %}
+        <div class="row">
+        {% endif %}
+            <div class="col-md-4">
+                <div class="speaker">
+
+                    <figure>
+                        <img alt="" class="img-responsive center-block" src="/static/assets/images/performer/{{i.picture}}">
+                    </figure>
+
+                    <h4>{{i.name}} 
+                    </h4>
+
+                    <p>{{i.description}}</p>
+
+
+
+                </div><!-- /.speaker -->
+            </div><!-- /.col-md-4 -->
+            {% if loop.index % 3 == 0 %}
+                </div><!-- /.row -->
+            {% endif %}
+        {% endfor %}
+
+        <!-- <div class="row">
+            <div class="col-md-4">
+
+                <div class="speaker">
+
+                    <figure>
+                        <img alt="" class="img-responsive center-block" src="/static/assets/images/performer/5.jpeg">
+                    </figure>
+
+                    <h4>Anniversary Partie
+                    </h4>
+
+                    <p>Anniversary Celebration would take place one year, maybe two, after the original wedding date.
+                    </p>
+
+
+                </div>
+            </div>
+            <div class="col-md-4">
+
+                <div class="speaker">
+
+                    <figure>
+                        <img alt="" class="img-responsive center-block" src="/static/assets/images/performer/n-4.jpg">
+                    </figure>
+
+                    <h4>New Year's Eve parties
+                    </h4>
+
+                    <p>Party decor and crafts for ringing in the new year!. See more ideas about new years eve party,
+                        eve parties, new years eve.</p>
+
+
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="speaker">
+                    <figure>
+                        <img alt="" class="img-responsive center-block" src="/static/assets/images/performer/w-1.jpeg">
+                    </figure>
+                    <h4>Wedding Ceremony
+
+                    </h4>
+                    <p>CEO of Peren</p>
+
+                </div>
+            </div>
+        </div> -->
+    </div>
+</section>
+
+<section id="registration" class="section registration">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Registration &amp; Pricing</h3>
+            </div>
+        </div>
+
+        <form action="/registration" method="post" >
+            <div class="row">
+                <div class="col-md-12" id="registration-msg" style="display:none;">
+                    <div class="alert"></div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name" id="fname" name="fname"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last Name" id="lname" name="lname"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Phone" id="cell" name="cell" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Address" id="address" name="address"
+                            required>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Zip Code" id="zip" name="zip" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" placeholder="Date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="time" class="form-control" placeholder="Time" id="time" name="time" required>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" name="city" id="city" required>
+                            <option readonly>City</option>
+                            <option value="karachi">Karachi</option>
+                            <option value="lahore">Lahore</option>
+                            <option value="islamabad">Islamabad</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" name="program" id="program" required>
+                            <option readonly>Select Your Program</option>
+                            {% for i in events %} 
+                            <option value="{{i.id}}">{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt20">
+                <button type="submit" class="btn btn-black" id="registration-submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section id="contribution" class="section bg-image-2 contribution">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-uppercase mt0 font-400">Submit Your Contribution Work</h3>
+
+                <p>You've inspired new consumer, racked up click-thru's, blown-up brand awareness. We can't give you
+                    back the weekends you worked, or erase the pain of being forced to make the logo bigger. But if you
+                    submit your best work.</p>
+
+                <a class="btn btn-white" href="#">Submit</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="schedule" class="section schedule">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Event Schedule</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="schedule-box">
+                    <div class="time">
+                        <time datetime="09:00">09:00 am</time> - <time datetime="22:00">10:00 am</time>
+                    </div>
+                    <h3>Welcome and intro</h3>
+                    <p>Mustafizur Khan, Karachi</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="schedule-box">
+                    <div class="time">
+                        <time datetime="10:00">10:00 am</time> - <time datetime="22:00">10:00 am</time>
+                    </div>
+                    <h3>Tips and share</h3>
+                    <p>Mustafizur Khan, Karachi</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="schedule-box">
+                    <div class="time">
+                        <time datetime="10:00">10:00 am</time> - <time datetime="22:00">10:00 am</time>
+                    </div>
+                    <h3>View from the top</h3>
+                    <p>Mustafizur Khan, Karachi</p>
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock %}

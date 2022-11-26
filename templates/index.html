@@ -1,0 +1,515 @@
+{% extends  'layout.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+    <header id="site-header" class="site-header valign-center">
+        <div class="intro">
+
+
+
+            <h1>Event Planner</h1>
+
+            <p>First &amp; Largest Event</p>
+
+            <a class="btn btn-white" href="#registration">Register Now</a>
+
+        </div>
+    </header>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <h3 class="section-title">About Us</h3>
+
+                    <p>You've inspired new consumer, racked up click-thru's, blown-up brand enes. We can't give you back
+                        the weekends you worked, or erase the pain ebeing forced to make the logo bigger. But if you
+                        submit your best work we ajusts might be able to give the chance to show you best digital
+                        marketing.</p>
+
+                    <figure>
+                        <img alt="" class="img-responsive" src="/static/assets/images/about-us.jpg">
+                    </figure>
+
+                </div><!-- /.col-sm-6 -->
+
+                <div class="col-sm-6">
+
+                    <h3 class="section-title multiple-title">What is Our Goal?</h3>
+
+                    <p>You've inspired new consumer, racked up click-thru's, blown-up brand enes. We can't give you back
+                        the weekends you worked, or erase the pain ebeing forced to make the logo bigger. But if you
+                        submit your best work we ajusts might be able to give the chance to show you best digital
+                        marketing.</p>
+
+                    <ul class="list-arrow-right">
+
+                        <li>Learn from the best Asian Social Media Experts &amp; Case Studies</li>
+                        <li>Have dedicated 2-to-1 meetings with the experts</li>
+                        <li>Reach more consumers for less by learning new digital media skills</li>
+                        <li>Save money when spending in online advertising</li>
+
+                    </ul>
+
+                </div><!-- /.col-sm-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+
+    <section id="facts" class="section bg-image-1 facts text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+
+                    <img src="/static/assets/images/icons/movie.png" class="img-fluid" alt="">
+                    <h3>VIDEO PRODUCTION</h3>
+
+                </div>
+                <div class="col-sm-3">
+
+                    <img src="/static/assets/images/icons/pin (1).png" class="img-fluid" alt="">
+                    <h3>VENUE MANAGEMENT
+                    </h3>
+
+                </div>
+                <div class="col-sm-3">
+
+                    <img src="/static/assets/images/icons/marketing.png" class="img-fluid" alt="">
+                    <h3>PARTY PLANNING BY DESIGN
+                    </h3>
+
+                </div>
+                <div class="col-sm-3">
+
+                    <img src="/static/assets/images/icons/management (1).png" class="img-fluid" alt="">
+                    <h3>EVENT ARTIST MANAGEMENT</h3>
+
+                </div>
+            </div><!-- row -->
+        </div><!-- container -->
+    </section>
+
+    <section id="Events" class="section Events">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h3 class="section-title">Events</h3>
+
+                </div>
+            </div>
+            {% for i in events %}
+            {% if loop.index % 3 == 0  %}
+            <div class="row">
+            {% endif %}
+                <div class="col-md-4">
+                    <div class="speaker">
+
+                        <figure>
+                            <img alt="" class="img-responsive center-block" src="/static/assets/images/performer/{{i.picture}}">
+                        </figure>
+
+                        <h4>{{i.name}} 
+                        </h4>
+
+                        <p>{{i.description}}</p>
+
+
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+
+            {% if loop.index % 3 == 0  %}
+                </div><!-- /.row -->
+            {% endif %}
+            {% endfor %}
+
+            <!-- <div class="row">
+                <div class="col-md-4">
+
+                    <div class="speaker">
+
+                        <figure>
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/5.jpeg">
+                        </figure>
+
+                        <h4>Anniversary Partie
+                        </h4>
+
+                        <p>Anniversary Celebration would take place one year, maybe two, after the original wedding
+                            date.</p>
+
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="speaker">
+
+                        <figure>
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/n-4.jpg">
+                        </figure>
+
+                        <h4>New Year's Eve parties
+                        </h4>
+
+                        <p>Party decor and crafts for ringing in the new year!. See more ideas about new years eve
+                            party, eve parties, new years eve.</p>
+
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="speaker">
+                        <figure>
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/w-1.jpeg">
+                        </figure>
+                        <h4>Wedding Ceremony
+
+                        </h4>
+                        <p>CEO of Peren</p>
+
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <section id="registration" class="section registration">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Registration &amp; Pricing</h3>
+                </div>
+            </div>
+
+            <form action="/registration" method="post" >
+                <div class="row">
+                    <div class="col-md-12" id="registration-msg" style="display:none;">
+                        <div class="alert"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name" id="fname" name="fname"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last Name" id="lname" name="lname"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" id="email" name="email"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Phone" id="cell" name="cell" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Address" id="address" name="address"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Zip Code" id="zip" name="zip" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" placeholder="Date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="time" class="form-control" placeholder="Time" id="time" name="time" required>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="city" id="city" required>
+                                <option readonly>City</option>
+                                <option value="karachi">Karachi</option>
+                                <option value="lahore">Lahore</option>
+                                <option value="islamabad">Islamabad</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="program" id="program" required>
+                                <option readonly>Select Your Program</option>
+                                {% for i in events %} 
+                                <option value="{{i.id}}">{{i.name}} ({{'%0.0f'| format(i.price|float)}} Rs)</option>
+                                {% endfor %}
+                                <!-- <option>Program Name 1</option>
+                                <option>Program Name 2</option>
+                                <option>Program Name 3</option> -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt20">
+                    <button type="submit" class="btn btn-black" id="registration-submit-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="contribution" class="section bg-image-2 contribution">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-uppercase mt0 font-400">It’s time to book your event</h3>
+
+                    <p>The event regularly attracts a diverse range of attendees from around the world, across different professions, and with different levels of experience transform your business.</p>
+
+                    <!-- <a class="btn btn-white" href="#">Submit</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="section schedule">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Event Schedule</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="09:00">09:00 am</time> - <time datetime="22:00">10:00 am</time>
+                        </div>
+                        <h3>Welcome and intro</h3>
+                        <p>Mustafizur Khan, Karachi</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="10:00">10:00 am</time> - <time datetime="22:00">10:00 am</time>
+                        </div>
+                        <h3>Tips and share</h3>
+                        <p>Mustafizur Khan, Karachi</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="10:00">10:00 am</time> - <time datetime="22:00">10:00 am</time>
+                        </div>
+                        <h3>View from the top</h3>
+                        <p>Mustafizur Khan, Karachi</p>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="partner" class="section partner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Event Partner</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-1"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-2"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-3"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-4"></a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-5"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-6"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-7"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-8"></a>
+                </div>
+            </div>
+    </section>
+
+    <section id="faq" class="section faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Event FAQs</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne"> What is in the price of ticket?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <!-- <h3>Hello</h3> -->
+                                    <p>Lorem Ipsum</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo"> What is included in my ticket ?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingTwo">
+                                <div class="panel-body">Hello</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree"> Office address ?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingThree">
+                                <div class="panel-body">Hello</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour"> How should I dress ?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingFour">
+                                <div class="panel-body">Hello</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFive">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive"> I have specific questions that are not addressed
+                                        here. Who can help me ?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingFive">
+                                <div class="panel-body">Hello</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="photos" class="section photos">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Photos</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="grid">
+
+                        <li class="grid-item grid-item-sm-6">
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/1p.jpg">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/2b.jpg">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block" src="/static/assets/images/performer/3.jpg">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/w-2.jpeg">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/n-4.jpg">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/n-2.jpg">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/n-1.jpg">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/bb.jpg">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="/static/assets/images/performer/7a.jpg">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% if register %}
+    <script>
+        Swal.fire(
+        'Registration Success!',
+        'Your Request has been received!',
+        'success'
+        )
+    </script>
+{% endif %}
+
+    {% endblock %}
